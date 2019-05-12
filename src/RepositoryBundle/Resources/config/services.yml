@@ -13,7 +13,7 @@ services:
         class: RepositoryBundle\ORM\Mapping\PimcoreClassMetadataFactory
 
     repository.repository.default_repository_factory:
-        class: RepositoryBundle\Repository\DefaultRepositoryFactory
+        class: RepositoryBundle\ORM\Repository\DefaultRepositoryFactory
 
     repository.orm.entity_manager:
         class: RepositoryBundle\ORM\EntityManager
