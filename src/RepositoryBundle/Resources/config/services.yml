@@ -8,18 +8,7 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
-
-    # controllers are imported separately to make sure they're public
-    # and have a tag that allows actions to type-hint services
-    RepositoryBundle\Controller\:
-        resource: '../../Controller'
-        public: true
-        tags: ['controller.service_arguments']
-
-    repository.security.news_voter:
-        class: RepositoryBundle\Security\NewsVoter
-        tags:
-            - { name: security.voter }
+        
     repository.orm_mapping.pimcore_class_metadata_factory_interface:
         class: RepositoryBundle\ORM\Mapping\PimcoreClassMetadataFactoryInterface
 
@@ -34,3 +23,4 @@ services:
             '@Pimcore\Model\Factory',
             '@repository.orm_mapping.pimcore_class_metadata_factory_interface',
             '@repository.repository.default_repository_factory']
+        public: true
