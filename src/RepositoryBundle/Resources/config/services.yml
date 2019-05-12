@@ -10,7 +10,7 @@ services:
         public: false
         
     repository.orm_mapping.pimcore_class_metadata_factory_interface:
-        class: RepositoryBundle\ORM\Mapping\PimcoreClassMetadataFactoryInterface
+        class: RepositoryBundle\ORM\Mapping\PimcoreClassMetadataFactory
 
     repository.repository.default_repository_factory:
         class: RepositoryBundle\Repository\DefaultRepositoryFactory
