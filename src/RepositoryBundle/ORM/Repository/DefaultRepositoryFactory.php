@@ -4,7 +4,8 @@
  * @date        12/05/2019
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
-namespace RepositoryBundle\Repository;
+namespace RepositoryBundle\ORM\Repository;
+
 use Doctrine\Common\Persistence\ObjectRepository;
 use RepositoryBundle\Common\PimcoreEntityManagerInterface;
 use RepositoryBundle\Common\Repository\RepositoryFactoryInterface;
