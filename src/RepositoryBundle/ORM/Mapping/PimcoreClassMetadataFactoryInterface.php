@@ -11,10 +11,10 @@ use Pimcore\Model\DataObject\ClassDefinition;
 use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataFactoryInterface;
 
 /**
- * Class PimcoreClassMetadataFactoryInterface
+ * Class PimcoreClassMetadataFactory
  * @package RepositoryBundle\ORM\Mapping
  */
-class PimcoreClassMetadataFactoryInterface implements ClassMetadataFactoryInterface
+class PimcoreClassMetadataFactory implements ClassMetadataFactoryInterface
 {
     private $metadataClasses = [];
     /**
