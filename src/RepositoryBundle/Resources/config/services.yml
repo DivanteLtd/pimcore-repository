@@ -21,6 +21,6 @@ services:
             '@doctrine.dbal.default_connection',
             '@doctrine.dbal.default_connection.event_manager',
             '@Pimcore\Model\Factory',
-            '@repository.orm_mapping.pimcore_class_metadata_factory_interface',
+            '@repository.orm_mapping.pimcore_class_metadata_factory',
             '@repository.repository.default_repository_factory']
         public: true
