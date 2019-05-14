@@ -25,7 +25,7 @@ class ClassMetadata implements \RepositoryBundle\Common\Persistence\Mapping\Clas
         string $className,
         int $classId,
         string $namespace ='Pimcore\\Model\\DataObject',
-        $identifier = ['id']
+        $identifier = ['o_id']
     ) {
         $this->name = $className;
         $this->namespace = $namespace;
@@ -50,7 +50,7 @@ class ClassMetadata implements \RepositoryBundle\Common\Persistence\Mapping\Clas
 
     public $tableName;
 
-    public $identifier = ['id'];
+    public $identifier = ['o_id'];
 
     public $customRepositoryClassName = '';
     /**
