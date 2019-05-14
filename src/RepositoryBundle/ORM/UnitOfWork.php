@@ -127,7 +127,7 @@ class UnitOfWork
     /**
      * @param object $entity
      */
-    public function persist(object $entity)
+    public function persist($entity)
     {
         $oid = spl_object_hash($entity);
 
@@ -165,7 +165,7 @@ class UnitOfWork
     /**
      * @param object $entity
      */
-    public function remove(object $entity)
+    public function remove($entity)
     {
         $entityState = $this->getEntityState($entity);
 
@@ -187,7 +187,7 @@ class UnitOfWork
      * @param object $entity
      * @return object
      */
-    public function merge(object $entity)
+    public function merge($entity)
     {
         throw new NotImplementedException('Method merge is not implemented');
     }
@@ -308,7 +308,7 @@ class UnitOfWork
     /**
      * @param object $obj
      */
-    public function initializeObject(object $obj)
+    public function initializeObject($obj)
     {
         throw new NotImplementedException('Method intizlieObject is not implemented');
     }
@@ -317,7 +317,7 @@ class UnitOfWork
      * @param object $entity
      * @return bool
      */
-    public function isScheduledForInsert(object $entity)
+    public function isScheduledForInsert($entity)
     {
         return isset($this->entityInsertions[spl_object_hash($entity)]);
     }
@@ -326,7 +326,7 @@ class UnitOfWork
      * @param object $entity
      * @return bool
      */
-    public function isInIdentityMap(object $entity)
+    public function isInIdentityMap($entity)
     {
         $oid = spl_object_hash($entity);
 
@@ -344,7 +344,7 @@ class UnitOfWork
      * @param object $entity
      * @return bool
      */
-    public function isScheduledForDelete(object $entity)
+    public function isScheduledForDelete($entity)
     {
         return isset($this->entityDeletions[spl_object_hash($entity)]);
     }
@@ -394,7 +394,7 @@ class UnitOfWork
     /**
      * @param object $entity
      */
-    private function persistNew(object $entity)
+    private function persistNew($entity)
     {
         $oid    = spl_object_hash($entity);
         $this->entityStates[$oid] = self::STATE_MANAGED;
@@ -405,7 +405,7 @@ class UnitOfWork
      * @param object $entity
      * @return bool
      */
-    public function addToIdentityMap(object $entity)
+    public function addToIdentityMap($entity)
     {
         $classMetadata = $this->em->getClassMetadata($entity->getClassName());
         $identifier    = $this->entityIdentifiers[spl_object_hash($entity)];
@@ -501,7 +501,7 @@ class UnitOfWork
      * @param object $entity
      * @return bool
      */
-    public function removeFromIdentityMap(object $entity)
+    public function removeFromIdentityMap($entity)
     {
         $oid           = spl_object_hash($entity);
         $classMetadata = $this->em->getClassMetadata(get_class($entity));
@@ -606,7 +606,7 @@ class UnitOfWork
     /**
      * @param object $entity
      */
-    private function persistExisted(object $entity)
+    private function persistExisted($entity)
     {
         $oid = spl_object_hash($entity);
         $this->entityUpdates[$oid] = $entity;

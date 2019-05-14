@@ -216,7 +216,7 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
      * @param object $entity The entity to refresh.
      * @return void
      */
-    public function refresh($entity)
+    public function refresh(Concrete $entity)
     {
         $obj = AbstractObject::getById($entity->getId(), true);
         $vars = $obj->getObjectVars();
@@ -273,7 +273,7 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
      * @return boolean TRUE if the entity exists in the database, FALSE otherwise.
      * @throws DBALException
      */
-    public function exists($entity)
+    public function exists(Concrete $entity)
     {
         $sql = 'SELECT 1 FROM ' . $this->class->tableName;
         return (bool) $this->connection->fetchColumn($sql);

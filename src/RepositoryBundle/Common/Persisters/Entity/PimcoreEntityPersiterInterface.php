@@ -121,7 +121,7 @@ interface PimcoreEntityPersiterInterface
      *
      * @return void
      */
-    public function refresh($entity);
+    public function refresh(Concrete $entity);
 
     /**
      * Loads a list of entities by a list of field criteria.
