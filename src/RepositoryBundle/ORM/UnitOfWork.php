@@ -12,10 +12,11 @@ use InvalidArgumentException;
 use Pimcore\Model\DataObject\AbstractObject;
 use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\FactoryInterface;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 use RepositoryBundle\Common\PimcoreEntityManagerInterface;
-use RepositoryBundle\ORM\Mapping\ClassMetadata;
 use RepositoryBundle\Common\Persisters\Entity\PimcoreEntityPersiterInterface;
 use RepositoryBundle\ORM\Persisters\Entity\BasicPimcoreEntityPersister;
+use RepositoryBundle\ORM\Persisters\Entity\EntityPersisterFactory;
 use Symfony\Component\Intl\Exception\NotImplementedException;
 use UnexpectedValueException;
 
@@ -69,16 +70,21 @@ class UnitOfWork
     private $modelFactory;
     /** @var array */
     private $originalEntityData = [];
-
+    /** @var EntityPersisterFactory */
+    private $entityPersisterFactory;
     /**
      * UnitOfWork constructor.
      * @param PimcoreEntityManagerInterface $entityManager
      * @param FactoryInterface              $factory
      */
-    public function __construct(PimcoreEntityManagerInterface $entityManager, FactoryInterface $factory)
-    {
+    public function __construct(
+        PimcoreEntityManagerInterface $entityManager,
+        FactoryInterface $factory,
+        EntityPersisterFactory $entityPersisterFactory
+    ) {
         $this->em = $entityManager;
         $this->modelFactory = $factory;
+        $this->entityPersisterFactory = $entityPersisterFactory;
     }
 
     /**
@@ -95,7 +101,7 @@ class UnitOfWork
         }
 
         $class = $this->em->getClassMetadata($entityName);
-        $persister = new BasicPimcoreEntityPersister($this->em, $class, $this->modelFactory);
+        $persister = $this->entityPersisterFactory->getEntityPersiter($this->em, $class, $this->modelFactory);
 
         $this->persisters[$entityName] = $persister;
 
@@ -366,7 +372,7 @@ class UnitOfWork
             return $assume;
         }
 
-        /** @var ClassMetadata $class */
+        /** @var ClassMetadataInterface $class */
         $class = $this->em->getClassMetadata(get_class($entity));
         $id    = $class->getIdentifierValues($entity);
 

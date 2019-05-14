@@ -7,9 +7,10 @@
 namespace RepositoryBundle\ORM\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 use RepositoryBundle\Common\PimcoreEntityManagerInterface;
 use RepositoryBundle\Common\Repository\RepositoryFactoryInterface;
-use RepositoryBundle\ORM\Mapping\ClassMetadata;
+
 /**
  * Class DefaultRepositoryFactory
  * @package RepositoryBundle\Repository
@@ -44,7 +45,7 @@ class DefaultRepositoryFactory implements RepositoryFactoryInterface
      */
     private function createRepository(PimcoreEntityManagerInterface $entityManager, $entityName)
     {
-        /* @var $metadata ClassMetadata */
+        /* @var $metadata ClassMetadataInterface */
         $metadata            = $entityManager->getClassMetadata($entityName);
         $repositoryClassName = $metadata->customRepositoryClassName
             ?: $entityManager->getDefaultRepositoryClassName();

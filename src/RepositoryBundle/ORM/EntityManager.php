@@ -14,10 +14,11 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\ORMInvalidArgumentException;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use Pimcore\Model\FactoryInterface;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadata;
 use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataFactoryInterface;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 use RepositoryBundle\Common\PimcoreEntityManagerInterface;
 use RepositoryBundle\Common\Repository\RepositoryFactoryInterface;
+use RepositoryBundle\ORM\Persisters\Entity\EntityPersisterFactory;
 use Symfony\Component\Intl\Exception\NotImplementedException;
 
 /**
@@ -80,14 +81,15 @@ class EntityManager implements PimcoreEntityManagerInterface
         EventManager $eventManager,
         FactoryInterface $factory,
         ClassMetadataFactoryInterface $metadataFactory,
-        RepositoryFactoryInterface $repositoryFactory
+        RepositoryFactoryInterface $repositoryFactory,
+        EntityPersisterFactory $entityPersisterFactory
     ) {
         $this->conn                = $conn;
         $this->eventManager        = $eventManager;
         $this->repositoryClassName = PimcoreEntityRepository::class;
         $this->metadataFactory     = $metadataFactory;
         $this->repositoryFactory   = $repositoryFactory;
-        $this->unitOfWork          = new UnitOfWork($this, $factory);
+        $this->unitOfWork          = new UnitOfWork($this, $factory, $entityPersisterFactory);
     }
 
     /**
@@ -112,7 +114,7 @@ class EntityManager implements PimcoreEntityManagerInterface
     {
         $class = $this->metadataFactory->getMetadataFor(ltrim($entityName, '\\'));
         $identifier = $class->getIdentifierFieldNames()[0];
-        if (! is_array($id)) {
+        if (!is_array($id)) {
             $id = [$identifier => $id];
         }
 
@@ -135,9 +137,9 @@ class EntityManager implements PimcoreEntityManagerInterface
         }
 
         $persister = $unitOfWork->getEntityPersister($class->name);
-        $object = $persister->loadById($sortedId);
-        $this->registerManaged($object, $sortedId);
-        return $persister->loadById($sortedId);
+        $object = $persister->loadById($id);
+        $this->registerManaged($object, $id);
+        return $object;
     }
 
     /**
@@ -296,7 +298,7 @@ class EntityManager implements PimcoreEntityManagerInterface
      *
      * @param string $className
      *
-     * @return ClassMetadata
+     * @return ClassMetadataInterface
      */
     public function getClassMetadata($className)
     {

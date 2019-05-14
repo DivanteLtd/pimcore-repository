@@ -8,11 +8,11 @@
 namespace RepositoryBundle\Common\Persistence\Mapping;
 
 /**
- * Class ClassMetadata
+ * Class ClassMetadataInterface
  * @package RepositoryBundle\Common\Persistence\Mapping
  * @property string $name
  */
-interface ClassMetadata
+interface ClassMetadataInterface
 {
     /**
      * @param  string|null $className

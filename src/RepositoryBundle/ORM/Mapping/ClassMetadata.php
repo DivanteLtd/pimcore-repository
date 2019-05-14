@@ -7,11 +7,13 @@
 
 namespace RepositoryBundle\ORM\Mapping;
 
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
+
 /**
  * Class ClassMetadata
  * @package RepositoryBundle\ORM\Mapping
  */
-class ClassMetadata implements \RepositoryBundle\Common\Persistence\Mapping\ClassMetadata
+class ClassMetadata implements ClassMetadataInterface
 {
 
     /**
@@ -19,7 +21,7 @@ class ClassMetadata implements \RepositoryBundle\Common\Persistence\Mapping\Clas
      * @param string $className
      * @param int    $classId
      * @param string $namespace
-     * @param string $identifier
+     * @param array $identifier
      */
     public function __construct(
         string $className,
@@ -50,7 +52,8 @@ class ClassMetadata implements \RepositoryBundle\Common\Persistence\Mapping\Clas
 
     public $tableName;
 
-    public $identifier = ['o_id'];
+    /** @var array */
+    public $identifier = [];
 
     public $customRepositoryClassName = '';
     /**

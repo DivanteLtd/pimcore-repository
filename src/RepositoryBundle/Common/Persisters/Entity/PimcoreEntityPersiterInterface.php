@@ -9,7 +9,7 @@ namespace RepositoryBundle\Common\Persisters\Entity;
 
 use Doctrine\Common\Collections\Criteria;
 use Pimcore\Model\DataObject\Concrete;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadata;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 
 /**
  * Interface PimcoreEntityPersiterInterface
@@ -18,7 +18,7 @@ use RepositoryBundle\Common\Persistence\Mapping\ClassMetadata;
 interface PimcoreEntityPersiterInterface
 {
     /**
-     * @return ClassMetadata
+     * @return ClassMetadataInterface
      */
     public function getClassMetadata();
 

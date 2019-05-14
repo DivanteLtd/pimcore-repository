@@ -33,7 +33,7 @@ class PimcoreClassMetadataFactory implements ClassMetadataFactoryInterface
      *
      * @param string $className The name of the class.
      *
-     * @return ClassMetadata
+     * @return ClassMetadataInterface
      */
     public function getMetadataFor($className)
     {

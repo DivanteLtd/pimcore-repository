@@ -15,9 +15,10 @@ use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\DataObject\Service;
 use Pimcore\Model\FactoryInterface;
 use Pimcore\Model\Listing\AbstractListing;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 use RepositoryBundle\Common\Persisters\Entity\PimcoreEntityPersiterInterface;
-use RepositoryBundle\ORM\Mapping\ClassMetadata;
 use RepositoryBundle\Common\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadata;
 
 /**
  * Class BasicPimcoreEntityPersister
@@ -30,7 +31,7 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
      */
     private $em;
     /**
-     * @var ClassMetadata
+     * @var ClassMetadataInterface
      */
     private $class;
 
@@ -54,12 +55,12 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
     /**
      * BasicPimcoreEntityPersister constructor.
      * @param PimcoreEntityManagerInterface $em
-     * @param ClassMetadata                 $class
+     * @param ClassMetadataInterface        $class
      * @param FactoryInterface              $modelFactory
      */
     public function __construct(
         PimcoreEntityManagerInterface $em,
-        ClassMetadata $class,
+        ClassMetadataInterface $class,
         FactoryInterface $modelFactory
     ) {
         $this->em    = $em;
@@ -69,7 +70,7 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
     }
 
     /**
-     * @return ClassMetadata
+     * @return ClassMetadataInterface
      */
     public function getClassMetadata()
     {
@@ -295,6 +296,9 @@ class BasicPimcoreEntityPersister implements PimcoreEntityPersiterInterface
         }
     }
 
+    /**
+     * @return string|null
+     */
     public function getFullQualifiedClassName()
     {
         return $this->getClassMetadata()->fullyQualifiedClassName($this->getClassMetadata()->name);

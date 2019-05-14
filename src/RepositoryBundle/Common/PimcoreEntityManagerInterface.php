@@ -10,7 +10,7 @@ namespace RepositoryBundle\Common;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\UnitOfWork;
 use Pimcore\Db\Connection;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadata;
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
 
 /**
  * Interface PimcoreEntityManagerInterface
@@ -56,7 +56,7 @@ interface PimcoreEntityManagerInterface extends ObjectManager
      *
      * @param string $className
      *
-     * @return ClassMetadata
+     * @return ClassMetadataInterface
      */
     public function getClassMetadata($className);
 
