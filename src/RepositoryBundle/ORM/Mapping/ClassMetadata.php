@@ -7,8 +7,6 @@
 
 namespace RepositoryBundle\ORM\Mapping;
 
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
-
 /**
  * Class ClassMetadata
  * @package RepositoryBundle\ORM\Mapping
@@ -118,5 +116,13 @@ class ClassMetadata implements ClassMetadataInterface
     public function setCustomRepositoryName(string $name)
     {
         $this->customRepositoryClassName = $name;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCustomRepositoryClassName()
+    {
+        return $this->customRepositoryClassName;
     }
 }

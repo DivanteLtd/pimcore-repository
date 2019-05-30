@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\ORMException;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
 use Symfony\Component\Intl\Exception\MethodNotImplementedException;
 use UnexpectedValueException;
 
@@ -32,7 +32,7 @@ class PimcoreEntityRepository implements ObjectRepository, Selectable
     protected $em;
 
     /**
-     * @var ClassMetadataInterface
+     * @var \RepositoryBundle\ORM\Mapping\ClassMetadataInterface
      */
     protected $class;
 
@@ -178,7 +178,7 @@ class PimcoreEntityRepository implements ObjectRepository, Selectable
     }
 
     /**
-     * @return ClassMetadataInterface
+     * @return \RepositoryBundle\ORM\Mapping\ClassMetadataInterface
      */
     protected function getClassMetadata()
     {

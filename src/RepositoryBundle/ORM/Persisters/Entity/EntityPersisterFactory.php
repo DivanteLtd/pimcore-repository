@@ -8,8 +8,8 @@
 namespace RepositoryBundle\ORM\Persisters\Entity;
 
 use Pimcore\Model\FactoryInterface;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
-use RepositoryBundle\Common\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\PimcoreEntityManagerInterface;
 
 /**
  * Class EntityPersisterFactory
@@ -18,9 +18,9 @@ use RepositoryBundle\Common\PimcoreEntityManagerInterface;
 class EntityPersisterFactory
 {
     /**
-     * @param PimcoreEntityManagerInterface $em
-     * @param ClassMetadataInterface        $classMetadata
-     * @param FactoryInterface              $factory
+     * @param \RepositoryBundle\ORM\PimcoreEntityManagerInterface $em
+     * @param ClassMetadataInterface                              $classMetadata
+     * @param FactoryInterface                                    $factory
      * @return BasicPimcoreEntityPersister
      */
     public function getEntityPersiter(

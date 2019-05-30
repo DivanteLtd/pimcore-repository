@@ -15,9 +15,9 @@ use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\DataObject\Service;
 use Pimcore\Model\FactoryInterface;
 use Pimcore\Model\Listing\AbstractListing;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
-use RepositoryBundle\Common\Persisters\Entity\PimcoreEntityPersiterInterface;
-use RepositoryBundle\Common\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\Persisters\Entity\PimcoreEntityPersiterInterface;
+use RepositoryBundle\ORM\PimcoreEntityManagerInterface;
 use RepositoryBundle\ORM\Mapping\ClassMetadata;
 
 /**

@@ -8,7 +8,7 @@
 namespace RepositoryBundle\ORM\Mapping;
 
 use Pimcore\Model\DataObject\ClassDefinition;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataFactoryInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataFactoryInterface;
 
 /**
  * Class PimcoreClassMetadataFactory
@@ -16,6 +16,8 @@ use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataFactoryInterface;
  */
 class PimcoreClassMetadataFactory implements ClassMetadataFactoryInterface
 {
+
+    
     private $metadataClasses = [];
     /**
      * Forces the factory to load the metadata of all classes known to the underlying

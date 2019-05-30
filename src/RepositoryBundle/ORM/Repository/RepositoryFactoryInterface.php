@@ -5,9 +5,9 @@
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
 
-namespace RepositoryBundle\Common\Repository;
+namespace RepositoryBundle\ORM\Repository;
 
-use RepositoryBundle\Common\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\PimcoreEntityManagerInterface;
 
 /**
  * Interface RepositoryFactoryInterface

@@ -5,11 +5,11 @@
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
 
-namespace RepositoryBundle\Common\Persisters\Entity;
+namespace RepositoryBundle\ORM\Persisters\Entity;
 
 use Doctrine\Common\Collections\Criteria;
 use Pimcore\Model\DataObject\Concrete;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
 
 /**
  * Interface PimcoreEntityPersiterInterface

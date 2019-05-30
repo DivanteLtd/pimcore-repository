@@ -14,10 +14,10 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\ORMInvalidArgumentException;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use Pimcore\Model\FactoryInterface;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataFactoryInterface;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
-use RepositoryBundle\Common\PimcoreEntityManagerInterface;
-use RepositoryBundle\Common\Repository\RepositoryFactoryInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataFactoryInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\Repository\RepositoryFactoryInterface;
 use RepositoryBundle\ORM\Persisters\Entity\EntityPersisterFactory;
 use Symfony\Component\Intl\Exception\NotImplementedException;
 
@@ -56,7 +56,7 @@ class EntityManager implements PimcoreEntityManagerInterface
      */
     private $eventManager;
     /**
-     * @var ClassMetadataFactoryInterface
+     * @var \RepositoryBundle\ORM\Mapping\ClassMetadataFactoryInterface
      */
     private $metadataFactory;
     /**
@@ -70,11 +70,12 @@ class EntityManager implements PimcoreEntityManagerInterface
      * Creates a new EntityManager that operates on the given database connection
      * and uses the given Configuration and EventManager implementations.
      *
-     * @param Connection                    $conn
-     * @param EventManager                  $eventManager
-     * @param FactoryInterface              $factory
-     * @param ClassMetadataFactoryInterface $metadataFactory
-     * @param RepositoryFactoryInterface    $repositoryFactory
+     * @param Connection                                                  $conn
+     * @param EventManager                                                $eventManager
+     * @param FactoryInterface                                            $factory
+     * @param \RepositoryBundle\ORM\Mapping\ClassMetadataFactoryInterface $metadataFactory
+     * @param \RepositoryBundle\ORM\Repository\RepositoryFactoryInterface $repositoryFactory
+     * @param EntityPersisterFactory                                      $entityPersisterFactory
      */
     public function __construct(
         Connection $conn,

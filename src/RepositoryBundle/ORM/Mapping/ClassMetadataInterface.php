@@ -5,7 +5,7 @@
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
 
-namespace RepositoryBundle\Common\Persistence\Mapping;
+namespace RepositoryBundle\ORM\Mapping;
 
 /**
  * Class ClassMetadataInterface
@@ -42,4 +42,9 @@ interface ClassMetadataInterface
      * @return array
      */
     public function getIdentifierValues($entity);
+
+    /**
+     * @return null|string
+     */
+    public function getCustomRepositoryClassName();
 }

@@ -5,7 +5,9 @@
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
 
-namespace RepositoryBundle\Common\Persistence\Mapping;
+namespace RepositoryBundle\ORM\Mapping;
+
+use RepositoryBundle\Common\Persistence\Mapping\ClassMetadata;
 
 /**
  * Interface ClassMetadataFactory

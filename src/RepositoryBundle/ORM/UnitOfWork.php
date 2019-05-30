@@ -12,9 +12,9 @@ use InvalidArgumentException;
 use Pimcore\Model\DataObject\AbstractObject;
 use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\FactoryInterface;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
-use RepositoryBundle\Common\PimcoreEntityManagerInterface;
-use RepositoryBundle\Common\Persisters\Entity\PimcoreEntityPersiterInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\PimcoreEntityManagerInterface;
+use RepositoryBundle\ORM\Persisters\Entity\PimcoreEntityPersiterInterface;
 use RepositoryBundle\ORM\Persisters\Entity\BasicPimcoreEntityPersister;
 use RepositoryBundle\ORM\Persisters\Entity\EntityPersisterFactory;
 use Symfony\Component\Intl\Exception\NotImplementedException;
@@ -52,7 +52,7 @@ class UnitOfWork
 
     /** @var PimcoreEntityManagerInterface */
     private $em;
-    /** @var PimcoreEntityPersiterInterface[] */
+    /** @var \RepositoryBundle\ORM\Persisters\Entity\PimcoreEntityPersiterInterface[] */
     private $persisters = [];
     /** @var array */
     private $identityMap = [];
@@ -92,7 +92,7 @@ class UnitOfWork
      *
      * @param string $entityName The name of the Entity.
      *
-     * @return PimcoreEntityPersiterInterface
+     * @return \RepositoryBundle\ORM\Persisters\Entity\PimcoreEntityPersiterInterface
      */
     public function getEntityPersister($entityName)
     {

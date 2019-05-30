@@ -5,12 +5,12 @@
  * @author      Michał Bolka <michal.bolka@gmail.com>
  */
 
-namespace RepositoryBundle\Common;
+namespace RepositoryBundle\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\UnitOfWork;
 use Pimcore\Db\Connection;
-use RepositoryBundle\Common\Persistence\Mapping\ClassMetadataInterface;
+use RepositoryBundle\ORM\Mapping\ClassMetadataInterface;
 
 /**
  * Interface PimcoreEntityManagerInterface
